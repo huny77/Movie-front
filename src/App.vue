@@ -62,7 +62,7 @@
 
 <script>
 // 로그인 로그아웃 판단용
-import { mapGetters, mapActions, mapState } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 
 export default {
@@ -71,7 +71,6 @@ export default {
     ...mapGetters([
       'isLoggedIn'
     ]),
-    ...mapState(["loading"]),
   },
   methods: {
     ...mapActions([

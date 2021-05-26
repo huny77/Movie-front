@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3 class="text-light text-start">오늘의 추천 컨텐츠</h3>
     <div hidden>
       {{bestMovies[0].poster_path}}
     </div>

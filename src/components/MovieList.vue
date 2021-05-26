@@ -2,20 +2,22 @@
   <div>
     <MovieFiveBest/>
     <MovieRecommend/>
+    <h3 class="text-light text-start">일반 컨텐츠</h3>
     <div class="row row-cols-6 row-cols-md-6 g-4">
       <div v-for="movie in movies" :key="movie.id">        
         <div class="col">
-          <div class="card">
+          <div class="card" @click="isModalViewed=true, tossMovie=movie, tossId=movie.id">
           <MovieCard :movie="movie"/>
-          <button @click="isModalViewed=true, tossMovie=movie"> 상세 </button>
+          <!-- <button @click="isModalViewed=true, tossMovie=movie, tossId=movie.id"> 상세 </button> -->
           
-          <ModalView v-if="isModalViewed" @close-modal="isModalViewed=false">
-          <MovieDetail :movieInfo="tossMovie"/>
-          </ModalView>
           </div>
         </div>  
       </div> 
     </div>
+    
+    <ModalView v-if="isModalViewed" @close-modal="isModalViewed=false">
+      <MovieDetail :movieInfo="tossMovie"/>
+    </ModalView>
   </div>
 </template>
 
@@ -32,7 +34,8 @@ export default {
   data() {
     return {
       isModalViewed: false,
-      tossMovie: Object
+      tossMovie: Object,
+      tossId: 0
     }
   },
   components: {

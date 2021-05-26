@@ -1,13 +1,16 @@
 <template>
-    <div class="col">
-      <div class="card card-background-color">
-        <img :src="moviePosterSrc"  class="card-img-top" alt="...">
-        <div class="card-body">
-          <p class="card-title text-light">{{ movie.title }}</p>
-          <p class="card-text text-light">{{ movie.release_date }}</p>
-        </div>
+<div>
+  <div class="col"> 
+    <div class="card card-background-color">
+      <img :src="moviePosterSrc"  class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-title text-light">{{ movie.title }}</p>
+        <p class="card-text text-light">{{ movie.release_date }}</p>
       </div>
     </div>
+  </div>
+</div>
+
 </template>
 
 <script>

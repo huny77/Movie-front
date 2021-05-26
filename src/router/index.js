@@ -6,7 +6,9 @@ import Signup from '../views/accounts/Signup.vue'
 import Profile from '../views/accounts/Profile.vue'
 import Community from '../views/movie/Community.vue'
 import CreatePost from '../views/movie/CreatePost.vue'
-import YoutubeSearch from '../views/movie/YoutubeSearch.vue'
+import RecommendMovie from '../views/movie/RecommendMovie.vue'
+import MovieDetailRoute from '../views/movie/MovieDetailRoute.vue'
+
 
 Vue.use(VueRouter)
 
@@ -42,10 +44,16 @@ const routes = [
     component: Profile
   },
   {
-    path: '/search',
-    name: 'YoutubeSearch',
-    component: YoutubeSearch
-  }
+    path: '/recommendmovie/:id',
+    name: 'RecommendMovie',
+    component: RecommendMovie
+  },
+  {
+    path: '/movieinfo/:id',
+    name: 'MovieDetailRoute',
+    component: MovieDetailRoute
+  },
+
 ]
 
 const router = new VueRouter({

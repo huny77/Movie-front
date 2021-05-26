@@ -35,9 +35,7 @@ export default {
   padding: 20px; 
   background-color: white; 
   min-height: 80%;
-   
   z-index: 10; 
-  opacity: 1; 
   border-radius: 30px;
 }
 

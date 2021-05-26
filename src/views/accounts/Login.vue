@@ -10,14 +10,22 @@
       <input type="password" id="password"  v-model="credentials.password">
     </div>
     <button @click="login(credentials)">로그인</button>
+    <!-- <sweet-modal icon="success">
+      This is a success!
+    </sweet-modal> -->
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+// import { SweetModal, SweetModalTab } from 'sweet-modal-vue'
 
 export default {
   name: 'Login',
+  // components: {
+  //   SweetModal,
+	// 	SweetModalTab,
+  // },
   data() {
     return {
       credentials: {

@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h2>Community</h2>
+    <div class="d-flex justify-content-end my-3 mx-5 px-3">
+      <button type="button" class="btn btn-outline-warning" data-mdb-ripple-color="dark">
+        <router-link class="text-decoration-none text-dark" to="/createpost">글 작성</router-link>
+      </button>
+    </div>
+  
+
+    
     <div class="px-5">
       <div class="card border-warning mt-5" v-for="post in posts" :key="post.id">
         <div class="card-header bg-transparent border-warning text-start"><h5>{{ post.title }}</h5></div>
@@ -23,6 +30,7 @@
     <ModalView v-if="isModalViewedDetail" @close-modal="isModalViewedDetail=false">
       <PostDetail :postId="postId" :getInfo="getInfo"/>
     </ModalView>
+    <router-view/>
   </div>
 
   

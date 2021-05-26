@@ -1,11 +1,13 @@
 <template>
 <div>
   <div class="col"> 
-    <div class="card card-background-color">
+    <div class="card card-background-color card-design">
       <img :src="moviePosterSrc"  class="card-img-top" alt="...">
-      <div class="card-body">
+      <div class="card-body-design">
+        <div class="card-body">
         <p class="card-title text-light">{{ movie.title }}</p>
         <p class="card-text text-light">{{ movie.release_date }}</p>
+      </div>
       </div>
     </div>
   </div>
@@ -32,5 +34,12 @@ export default {
 <style>
  .card-background-color {
    background-color: #27292d
+ }
+ .card-design {
+   min-height: 480px;
+ }
+ .card-body-design {
+   align-items: center;
+   justify-content: center;
  }
 </style>

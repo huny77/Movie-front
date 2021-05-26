@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="px-5">
+    <!-- <div class="px-5">
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="dataTitle">제목</span>
@@ -12,7 +12,7 @@
       </div>   
       <div class="input-group mb-3">
         <span class="input-group-text">내 점수 : </span>
-        <input v-model="data.rank" type="integer" class="form-control" aria-label="rank">
+        <input v-model="data.rank" type="number" min="1" max="10" class="form-control" aria-label="rank">
         <span class="input-group-text"> 점</span>
       </div> 
       <div class="input-group">
@@ -23,8 +23,33 @@
         <button class="btn btn-outline-warning" @click="postCreate">써져라</button>
       </div>
 
-    </div>
-    
+    </div> -->
+  <div class="container">
+    <form>
+      <div class="mb-3">
+        <label for="dataTitle" class="form-label"></label>
+        <input v-model.trim="data.title" type="text" class="form-control" placeholder="제목" aria-label="title" aria-describedby="dataTitle">
+      </div>
+      <div class="mb-3">
+        <label for="dataMovieTitle" class="form-label"></label>
+        <input v-model.trim="data.movie_title" type="text" class="form-control" placeholder="영화" aria-label="movieTitle" aria-describedby="dataMovieTitle">
+      </div>
+      <div class="mb-3">
+        <label for="dataMovieScore" class="form-label"></label>
+        <input v-model="data.rank" type="number" min="1" max="10" placeholder="점수" aria-label="dataMovieScore" aria-describedby="dataMovieScore" class="form-control" >
+        <div id="emailHelp" class="form-text">1점부터 10점 사이를 입력해 주세요.</div>
+      </div>
+      <div class="mb-3">
+        <label for="dataMovieContent" class="form-label"></label>
+        <textarea v-model.trim="data.content" type="text" class="form-control" placeholder="내용" aria-label="dataMovieContent" aria-describedby="dataMovieContent"></textarea>
+      </div>
+      <button type="submit" class="btn btn-outline-warning" @click="postCreate" data-mdb-ripple-color="dark">
+        작성
+      </button>
+    </form>
+  </div>
+  
+
   </div>
 </template>
 

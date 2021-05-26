@@ -36,7 +36,12 @@
       <input v-model.trim="reviewData.rank" type="integer" class="form-control border-warning">
       <div class="text-end"><button class="btn btn-outline-warning" @click="create_review()">작성</button></div>
     </div>
-
+    <iframe 
+      :src="youtubeSrc"
+      frameborder="0"  
+      width="640" 
+      height="360">
+    </iframe>
   </div>
  </div>
 </div>
@@ -71,6 +76,9 @@ export default {
   computed: {
     imgSrc() {
       return 'https://image.tmdb.org/t/p/w500' + this.movieInfo.poster_path
+    },
+    youtubeSrc() {
+      return `https://www.youtube.com/embed/${this.movieInfo.key}`;
     },
   },
   created() {

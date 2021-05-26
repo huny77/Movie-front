@@ -11,6 +11,8 @@
     "@jambonn/vue-concise-carousel": "^1.1.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "sass-loader": "^11.1.1",
+    "sweet-modal-vue": "^2.0.0",
     "vue": "^2.6.11",
     "vue-carousel-3d": "^1.0.1",
     "vue-router": "^3.2.0",

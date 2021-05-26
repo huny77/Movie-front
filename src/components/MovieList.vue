@@ -7,11 +7,12 @@
     <div class="row row-cols-xs-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 row-cols-xl-6 g-4">
       <div v-for="movie in movies" :key="movie.id">        
         <div class="col">
-          <div class="card" @click="isModalViewed=true, tossMovie=movie, tossId=movie.id">
+          <!-- <div class="card" @click="isModalViewed=true, tossMovie=movie, tossId=movie.id"> -->
+          <router-link :to="`/movieinfo/${movie.id}`">
           <MovieCard :movie="movie"/>
-          <!-- <button @click="isModalViewed=true, tossMovie=movie, tossId=movie.id"> 상세 </button> -->
+          </router-link>
           
-          </div>
+          <!-- </div> -->
         </div>  
       </div> 
     </div>

@@ -15,18 +15,18 @@
       <div class="ml-4 w-75 mt-5">
         <h1 class="movie-title font-color">{{ movieInfo.title }}</h1>
         <div class="movie-information-wrapper mt-4 d-flex align-items-center">
-          <p class="mx-3 font-color">개봉일 : {{ movieInfo.release_date }}</p>
-          <p class="mx-3 font-color">평점 : {{ movieInfo.vote_average }}</p>
+          <h3 class="mx-3 font-color">개봉일 : {{ movieInfo.release_date }}</h3>
+          <h3 class="mx-3 font-color">평점 : {{ movieInfo.vote_average }}</h3>
         </div>
-        <div class="movie-information-wrapper mt-4 d-flex align-items-center">
+        <div class="movie-information-wrapper mt-4 d-flex align-items-center text-start">
           <p class="mx-3 font-color">{{ movieInfo.overview }}</p>
         </div>
         
         <iframe 
           :src="youtubeSrc"
           frameborder="0"  
-          width="640" 
-          height="360">
+          width="800" 
+          height="500">
         </iframe>
         
 

@@ -1,8 +1,45 @@
 <template>
 <div>
+  <!-- Tabs navs -->
+  <ul class="nav nav-tabs bg-dark" id="ex1" role="tablist">
+    <li class="nav-item bg-dark" role="presentation">
+      <a
+        class="nav-link active text-warning border-warning"
+        id="ex1-tab-1"
+        data-mdb-toggle="tab"
+        href="#ex1-tabs-1"
+        role="tab"
+        aria-controls="ex1-tabs-1"
+        aria-selected="true"
+        >영화 상세</a
+      >
+    </li>
+    <li class="nav-item bg-dark" role="presentation">
+      <a
+        class="nav-link text-warning border-warning"
+        id="ex1-tab-2"
+        data-mdb-toggle="tab"
+        href="#ex1-tabs-2"
+        role="tab"
+        aria-controls="ex1-tabs-2"
+        aria-selected="false"
+        >리뷰</a
+      >
+    </li>
+  </ul>
+  <!-- Tabs navs -->
+
+  <!-- Tabs content -->
+  <div class="tab-content" id="ex1-content">
+    <div
+      class="tab-pane fade show active"
+      id="ex1-tabs-1"
+      role="tabpanel"
+      aria-labelledby="ex1-tab-1"
+    >
   <div 
-  class="movie-detail-image"
-  :style="{ backgroundImage: `url(${backgroundSrc})` }" > 
+    class="movie-detail-image"
+    :style="{ backgroundImage: `url(${backgroundSrc})` }" > 
   
     <div class="movie-content d-flex">
       <div style="" class="mt-3 mx-3">
@@ -16,45 +53,87 @@
         <h1 class="movie-title font-color">{{ movieInfo.title }}</h1>
         
         <div class="movie-information-wrapper mt-4 d-flex align-items-center">
-          <p class="mx-3 font-color">개봉일 : {{ movieInfo.release_date }}</p>
-          <p class="mx-3 font-color">평점 : {{ movieInfo.vote_average }}</p>
-          <div class="mx-3">
-            <button class="btn btn-outline-danger" v-if="is_liked" @click="like">❤</button> 
-            <button class="btn btn-outline-danger" v-else @click="like">🤍</button>
-          </div>
-          <p class="mt-3 font-color-red">{{ countLike }}</p>
+          <h3 class="mx-3 font-color">개봉일 : {{ movieInfo.release_date }}</h3>
+          <h3 class="mx-3 font-color">평점 : {{ movieInfo.vote_average }}</h3>
+        <div class="mx-3">
+            <div class="text-danger" v-if="is_liked" @click="like"><i class="fas fa-heart fa-3x"></i></div> 
+            <div class="text-danger" v-else @click="like"><i class="far fa-heart fa-3x"></i></div>
         </div>
-
-        <div class="movie-information-wrapper mt-4 d-flex align-items-center">
+        <p class="mt-3 font-color-red">{{ countLike }}</p>
+        </div>
+        <div class="movie-information-wrapper mt-4 d-flex align-items-center text-start">
           <p class="mx-3 font-color">{{ movieInfo.overview }}</p>
         </div>
-
-        <div>
-          <p class="text-start font-color mx-3">리뷰 {{ reviewList.length }}</p>
-          <div v-for="review in reviewList" :key="review.id">
-            <p class="text-start font-color mx-3">{{ review.content }}</p>
-          </div>
-        </div>
-        
-        <div class="input-group mb-3 mx-3">
-          <input v-model.trim="reviewData.content" type="text" class="form-control border-warning" placeholder="당신의 감상을 남겨주세요">
-          <span class="input-group-text border-warning">점수:</span>
-          <input v-model.trim="reviewData.rank" type="number" min="1" max="10" class="form-control border-warning">
-          <div class="text-end"><button class="btn btn-outline-warning" @click="create_review()">작성</button></div>
-        </div>
-        
         <iframe 
           :src="youtubeSrc"
           frameborder="0"  
-          width="640" 
-          height="360">
+          width="800" 
+          height="500">
         </iframe>
-        
-
+      </div>
+      </div>
       </div>
     </div>
+
+
+    <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+    <div 
+      class="movie-detail-image"
+      :style="{ backgroundImage: `url(${backgroundSrc})` }" > 
     
+      <div class="movie-content d-flex">
+        <div style="" class="mt-3 mx-3">
+          <img
+            class="mt-2 "
+            style="height:80vh;"
+            :src="imgSrc"
+          />
+        </div>
+      <div class="ml-4 w-75 mt-5">
+        <h1 class="movie-title font-color">{{ movieInfo.title }}</h1>
+        
+        <div class="movie-information-wrapper mt-4 d-flex align-items-center">
+          <h3 class="mx-3 font-color">현재 좋아요 수</h3>
+        <div class="mx-3">
+            <div class="text-danger" v-if="is_liked" @click="like"><i class="fas fa-heart fa-3x"></i></div> 
+            <div class="text-danger" v-else @click="like"><i class="far fa-heart fa-3x"></i></div>
+        </div>
+        <p class="mt-3 font-color-red">{{ countLike }}</p>
+        </div>
+        <p class="text-start font-color mx-3">현재 작성된 리뷰 : {{ reviewList.length }}</p>
+
+        <div class="input-group mb-3 mx-3">
+          <input v-model.trim="reviewData.content" type="text" class="form-control border-warning" placeholder="당신의 감상을 남겨주세요">
+          <span class="input-group-text border-warning text-light">점수:</span>
+          <input v-model.trim="reviewData.rank" type="number" min="1" max="10" class="form-control border-warning">
+          <div class="text-end"><button class="btn btn-outline-warning" @click="create_review()">작성</button></div>
+        </div>
+
+      <table class="table table-borderless">
+        <thead class="border-bottom">
+          <tr>
+            <th scope="col" colspan="3" class="text-light">Review</th>
+            <th scope="col" class="text-light">평점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="review in reviewList" :key="review.id">
+            <th scope="row" colspan="3" class="text-center font-color">{{ review.content }}</th>
+            <td class="text-center font-color">{{ review.rank }}</td>
+            <!-- <button type="button" class="btn btn-danger btn-sm px-3">
+              <i class="fas fa-times"></i>
+            </button> -->
+          </tr>
+        </tbody>
+      </table>
+      
+      </div>
+      </div>
+      </div>
+    </div>
+
   </div>
+  <!-- Tabs content -->
 </div>
 </template>
 
@@ -191,7 +270,14 @@ export default {
   color: white;
 }
 .font-color-red {
-  color: red;
+  color: white;
+  font-size: 18px;
+}
+.nav-tab-back {
+  background-color: #27292d;
 }
 
+.nav-font-color {
+  color: white;
+}
 </style>

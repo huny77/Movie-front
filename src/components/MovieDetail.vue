@@ -1,6 +1,6 @@
 <template>
 <div class="movie-detail">
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="movie-content d-flex col-3">
         
@@ -12,9 +12,7 @@
         
       <div class="col-9">
           <div class="ml-4 w-75">
-          <!-- <img :src="imgSrc" alt="포스터없음" width="200"> -->
           <h3 class="movie-title">{{ movieInfo.title }}</h3>
-          <!-- <p class="movie-title">{{ is_liked }}</p> -->
           <div class="movie-information-wrapper mt-4 d-flex align-items-center">
             <p class="mx-3">개봉일 : {{ movieInfo.release_date }}</p>
             <p class="mx-3">평점 : {{ movieInfo.vote_average }}</p>
@@ -46,7 +44,51 @@
       </div>
       </div>
       </div>
+  </div> -->
+  <!-- Tabs navs -->
+  <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link active"
+        id="ex1-tab-1"
+        data-mdb-toggle="tab"
+        href="#ex1-tabs-1"
+        role="tab"
+        aria-controls="ex1-tabs-1"
+        aria-selected="true"
+        >영화 상세</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="ex1-tab-2"
+        data-mdb-toggle="tab"
+        href="#ex1-tabs-2"
+        role="tab"
+        aria-controls="ex1-tabs-2"
+        aria-selected="false"
+        >리뷰</a
+      >
+    </li>
+  </ul>
+  <!-- Tabs navs -->
+
+  <!-- Tabs content -->
+  <div class="tab-content" id="ex1-content">
+    <div
+      class="tab-pane fade show active"
+      id="ex1-tabs-1"
+      role="tabpanel"
+      aria-labelledby="ex1-tab-1"
+    >
+      Tab 1 content
+    </div>
+    <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+      Tab 2 content
+    </div>
   </div>
+  <!-- Tabs content -->
 </div>
 
 </template>

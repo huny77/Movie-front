@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="col"> 
-    <div class="card card-background-color card-design scale">
+    <div class="card card-background-color card-design scale mx-3">
       <img :src="moviePosterSrc"  class="card-img-top" alt="...">
       <div class="card-body-design">
         <div class="card-body">
@@ -58,5 +58,10 @@ export default {
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
 }
-.img {width:325px; height:280px; overflow:hidden } 
+.img {width:325px; height:280px; overflow:hidden }
+
+div, p {
+  font-family: 'Jua', sans-serif;
+  font-size: 15pt;
+}
 </style>

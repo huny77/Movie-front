@@ -205,4 +205,5 @@ export default {
   font-size: 14px;
   color: black
 }
+
 </style>

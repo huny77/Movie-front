@@ -123,9 +123,9 @@
           <tr v-for="review in reviewList" :key="review.id">
             <th scope="row" colspan="3" class="text-center font-color">{{ review.content }}</th>
             <td class="text-center font-color">{{ review.rank }}</td>
-            <!-- <button type="button" class="btn btn-danger btn-sm px-3">
+            <button type="button" class="btn btn-danger btn-sm px-3" @click="delete_review(review.id)">
               <i class="fas fa-times"></i>
-            </button> -->
+            </button>
           </tr>
         </tbody>
       </table>
@@ -213,6 +213,23 @@ export default {
           this.reviewList.push(res.data)
           this.reviewData.content = ''
           this.reviewData.rank = 0
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    },
+    delete_review(reviewId) {
+      // console.log(reviewId)
+      // console.log(this.movieInfo.id)
+      axios.delete(`http://127.0.0.1:8000/api/v1/movies/${this.movieInfo.id}/${reviewId}/`)
+        .then(res => {
+          console.log(res.data)
+          for(let i = 0; i < this.reviewList.length; i++) {
+            if(this.reviewList[i]['id'] === reviewId)  {
+              this.reviewList.splice(i, 1);
+              i--;
+            }
+          }
         })
         .catch(err => {
           console.error(err)

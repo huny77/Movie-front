@@ -72,7 +72,7 @@ export default {
           console.log(res)
         })
         .then(() => {
-          this.$router.push({ name: 'Community' })
+          this.$router.go(this.$router.push({ name: 'Community' }))
         })
         .catch(err => {
           console.error(err)

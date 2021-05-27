@@ -8,6 +8,7 @@ import Community from '../views/movie/Community.vue'
 import CreatePost from '../views/movie/CreatePost.vue'
 import RecommendMovie from '../views/movie/RecommendMovie.vue'
 import MovieDetailRoute from '../views/movie/MovieDetailRoute.vue'
+import SearchMovie from '../views/movie/SearchMovie.vue'
 
 
 Vue.use(VueRouter)
@@ -52,6 +53,11 @@ const routes = [
     path: '/movieinfo/:id',
     name: 'MovieDetailRoute',
     component: MovieDetailRoute
+  },
+  {
+    path: '/searchmovie/:query',
+    name: 'SearchMovie',
+    component: SearchMovie
   },
 
 ]

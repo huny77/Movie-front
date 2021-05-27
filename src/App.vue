@@ -1,51 +1,5 @@
 <template>
   <div id="app">
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <router-link class="navar-brand text-decoration-none text-light mx-3" to="/">Co린이</router-link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
-        <div class="navbar-nav me-auto mb-2 mb-lg-0">
-          <div v-if="isLoggedIn">
-            <li class="nav-item d-flex">
-              <router-link class="nav-link" aria-current="page" to="/">홈</router-link>
-            </li>
-            <li class="nav-item d-flex">
-              <router-link class="nav-link" to="/community">게시판</router-link>
-            </li>
-            <li class="nav-item dropdown d-flex">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                내 정보
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><router-link class="dropdown-item" to="/profile">프로필</router-link></li>
-                <li><div class="dropdown-item" @click="logout">로그아웃</div></li>
-              </ul>
-            </li>
-          </div>
-          
-      <div v-if="!isLoggedIn" class="d-flex justify-content-end">
-        <form>
-          <router-link to="/login">
-          <button class="btn btn-outline-primary" >로그인</button>
-          </router-link>
-        </form>
-        <form>
-          <router-link to="/signup">
-          <button class="btn btn-outline-secondary" >회원가입</button>
-          </router-link>
-        </form>
-      </div>
-        </div>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav> -->
   <!-- Navbar -->
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <!-- Container wrapper -->
@@ -68,8 +22,9 @@
         <!-- Navbar brand -->
         <router-link class="navbar-brand" to="/">
           <img
-            src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png"
-            height="15"
+            src='@/assets/coc_logo.png'
+            height="40"
+            width="100"
             alt=""
             loading="lazy"
           />
@@ -113,7 +68,7 @@
         >
           <i class="fas fa-user"></i>
         </a>
-        <ul
+        <ul v-if="isLoggedIn"
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuLink"
         >

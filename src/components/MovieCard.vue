@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="col"> 
-    <div class="card card-background-color card-design">
+    <div class="card card-background-color card-design scale">
       <img :src="moviePosterSrc"  class="card-img-top" alt="...">
       <div class="card-body-design">
         <div class="card-body">
@@ -42,4 +42,21 @@ export default {
    align-items: center;
    justify-content: center;
  }
+
+ .scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+.scale:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+.img {width:325px; height:280px; overflow:hidden } 
 </style>

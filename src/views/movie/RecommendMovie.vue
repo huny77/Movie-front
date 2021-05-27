@@ -19,15 +19,17 @@
           <h3 class="mx-3 font-color">평점 : {{ movieInfo.vote_average }}</h3>
         </div>
         <div class="movie-information-wrapper mt-4 d-flex align-items-center text-start">
-          <p class="mx-3 font-color">{{ movieInfo.overview }}</p>
+          <p class="mx-3 font-color youtube-position">{{ movieInfo.overview }}</p>
         </div>
-        
-        <iframe 
-          :src="youtubeSrc"
-          frameborder="0"  
-          width="800" 
-          height="500">
-        </iframe>
+        <div>
+          <iframe
+            :src="youtubeSrc"
+            allow="autoplay; encrypted-media"
+            frameborder="0"  
+            width="640" 
+            height="360">
+          </iframe>
+        </div>
         
 
       </div>
@@ -55,7 +57,7 @@ export default {
       return 'https://image.tmdb.org/t/p/w500' + this.movieInfo.poster_path
     },
     youtubeSrc() {
-      return `https://www.youtube.com/embed/${this.video_key}`
+      return `https://www.youtube.com/embed/${this.video_key}?autoplay=1&mute=1`
     },
     backgroundSrc() {
       return 'https://image.tmdb.org/t/p/w500' + this.movieInfo.backdrop_path
@@ -136,5 +138,9 @@ export default {
 
 .font-color {
   color: white;
+}
+
+.youtube-position {
+  margin-bottom: 100px;
 }
 </style>

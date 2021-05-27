@@ -62,14 +62,17 @@
         <p class="mt-3 font-color-red">{{ countLike }}</p>
         </div>
         <div class="movie-information-wrapper mt-4 d-flex align-items-center text-start">
-          <p class="mx-3 font-color">{{ movieInfo.overview }}</p>
+          <p class="mx-5 font-color youtube-position">{{ movieInfo.overview }}</p>
         </div>
-        <iframe 
-          :src="youtubeSrc"
-          frameborder="0"  
-          width="800" 
-          height="500">
-        </iframe>
+        <div class="youtube-position">
+          <iframe
+            :src="youtubeSrc"
+            allow="autoplay; encrypted-media"
+            frameborder="0"  
+            width="640" 
+            height="360">
+          </iframe>
+        </div>
       </div>
       </div>
       </div>
@@ -161,7 +164,7 @@ export default {
       return 'https://image.tmdb.org/t/p/w500' + this.movieInfo.poster_path
     },
     youtubeSrc() {
-      return `https://www.youtube.com/embed/${this.video_key}`
+      return `https://www.youtube.com/embed/${this.video_key}?autoplay=1&mute=1`
     },
     backgroundSrc() {
       return 'https://image.tmdb.org/t/p/w500' + this.movieInfo.backdrop_path
@@ -279,5 +282,9 @@ export default {
 
 .nav-font-color {
   color: white;
+}
+
+.youtube-position {
+  margin-bottom: 50px;
 }
 </style>

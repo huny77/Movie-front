@@ -7,36 +7,41 @@
     <div hidden>
       {{bestMovies[0].poster_path}}
     </div>
-    <carousel-3d autoplay=True autoplayHoverPause=True height=500>
+    <carousel-3d autoplay=true autoplayHoverPause=true height=500>
       <slide :index="0">
-        <img :src="bestMoviePosterSrc1" alt="" @click="isModalViewed=true, tossMovie=bestMovies[0]">
+        <router-link :to="`/movieinfo/${bestMovies[0].id}`">
+          <img :src="bestMoviePosterSrc1" alt="">
+        </router-link>
       </slide>
       <slide :index="1">
-        <img :src="bestMoviePosterSrc2" alt="" @click="isModalViewed=true, tossMovie=bestMovies[1]">
+        <router-link :to="`/movieinfo/${bestMovies[1].id}`">
+          <img :src="bestMoviePosterSrc2" alt="">
+        </router-link>
       </slide>
       <slide :index="2">
-        <img :src="bestMoviePosterSrc3" alt="" @click="isModalViewed=true, tossMovie=bestMovies[2]">
+        <router-link :to="`/movieinfo/${bestMovies[2].id}`">
+          <img :src="bestMoviePosterSrc3" alt="">
+        </router-link>
       </slide>
       <slide :index="3">
-        <img :src="bestMoviePosterSrc4" alt="" @click="isModalViewed=true, tossMovie=bestMovies[3]">
+        <router-link :to="`/movieinfo/${bestMovies[3].id}`">
+          <img :src="bestMoviePosterSrc4" alt="">
+        </router-link>
       </slide>
       <slide :index="4">
-        <img :src="bestMoviePosterSrc5" alt="" @click="isModalViewed=true, tossMovie=bestMovies[4]">
+        <router-link :to="`/movieinfo/${bestMovies[4].id}`">
+          <img :src="bestMoviePosterSrc5" alt="">
+        </router-link>
       </slide>
     </carousel-3d>
-    
-    <ModalView v-if="isModalViewed" @close-modal="isModalViewed=false">
-      <MovieDetail :movieInfo="tossMovie"/>
-    </ModalView>
 
   </div>
 </template>
-
 <script>
 // import axios from 'axios'
 import { Carousel3d, Slide } from 'vue-carousel-3d'
-import ModalView from '@/components/ModalView.vue'
-import MovieDetail from '@/components/MovieDetail.vue'
+// import ModalView from '@/components/ModalView.vue'
+// import MovieDetail from '@/components/MovieDetail.vue'
 
 export default {
   name: "MovieFiveBest",
@@ -58,8 +63,6 @@ export default {
   components: {
     Carousel3d,
     Slide,
-    ModalView,
-    MovieDetail,
   },
   computed : {
     bestMoviePosterSrc1() {

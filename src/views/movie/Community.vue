@@ -28,7 +28,7 @@
       <PostUpdate :postId="postId" :tossPost="tossPost"/>
     </ModalView>
     <ModalView v-if="isModalViewedDetail" @close-modal="isModalViewedDetail=false">
-      <PostDetail :postId="postId" :getInfo="getInfo"/>
+      <PostDetail :postId="postId" :getInfo="getInfo" :userId="userId"/>
     </ModalView>
     <router-view/>
   </div>
@@ -56,7 +56,8 @@ export default {
       postId: 0,
       tossPost: Object,
       posts: [],
-      getInfo: Object
+      getInfo: Object,
+      userId: ''
     }
   },
   created() {
@@ -68,6 +69,13 @@ export default {
       .then((res) => {
         console.log(res)
         this.posts = res.data
+        axios.get('http://127.0.0.1:8000/api/v1/accounts/returnuserpk/')
+          .then(res => {
+            this.userId = res.data.user_id
+          })
+          .catch(err => {
+            console.error(err)
+          })
       })
       .catch((err) => {
         console.error(err)

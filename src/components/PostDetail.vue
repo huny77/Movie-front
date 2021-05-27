@@ -34,6 +34,7 @@ export default {
     return {
       post: Object,
       like_numbers: 1,
+      like_list: [],
       is_liked: false,
       commentData: {   
         content: '',
@@ -46,7 +47,24 @@ export default {
     },
     getInfo: {
       type: Object
+    },
+    userId: {
+      type: Number
     }
+  },
+  created() {
+    axios.get(`http://127.0.0.1:8000/api/v1/community/${this.postId}/likelist/`)
+      .then(res => {
+        console.log(res.data)
+        this.like_list = res.data.like_list
+        this.like_numbers = res.data.like_list.length
+        if (this.like_list.includes(this.userId)) {
+          this.is_liked = true
+        }
+      })
+      .catch(err => {
+        console.error(err)
+      })
   },
   computed: {
     commentList() {

@@ -1,49 +1,52 @@
 <template>
 <div class="movie-detail">
-  <!-- <div class="movie-detail-image">
-    <img :src="imgSrc">
-  </div> -->
-  <div class="movie-content d-flex">
-  <div style="">
-    <img
-      class="mt-2 "
-      style="height:80vh;"
-      :src="imgSrc"
-    />
-  </div>
-  <div class="ml-4 w-75">
-    <!-- <img :src="imgSrc" alt="포스터없음" width="200"> -->
-    <h3 class="movie-title">{{ movieInfo.title }}</h3>
-    <!-- <p class="movie-title">{{ is_liked }}</p> -->
-    <div class="movie-information-wrapper mt-4 d-flex align-items-center">
-      <p class="mx-3">개봉일 : {{ movieInfo.release_date }}</p>
-      <p class="mx-3">평점 : {{ movieInfo.vote_average }}</p>
-      <div class="mx-5">
-        <button class="btn btn-outline-danger" v-if="is_liked" @click="like">❤</button> 
-        <button class="btn btn-outline-danger" v-else @click="like">🤍</button>
-        <span>{{ countLike }}</span>
+  <div class="container">
+    <div class="row">
+      <div class="movie-content d-flex col-3">
+        
+        <img
+          class="mt-2 "
+          style="height:80vh;"
+          :src="imgSrc"
+        />
+        
+      <div class="col-9">
+          <div class="ml-4 w-75">
+          <!-- <img :src="imgSrc" alt="포스터없음" width="200"> -->
+          <h3 class="movie-title">{{ movieInfo.title }}</h3>
+          <!-- <p class="movie-title">{{ is_liked }}</p> -->
+          <div class="movie-information-wrapper mt-4 d-flex align-items-center">
+            <p class="mx-3">개봉일 : {{ movieInfo.release_date }}</p>
+            <p class="mx-3">평점 : {{ movieInfo.vote_average }}</p>
+            <div class="mx-5">
+              <button class="btn btn-outline-danger" v-if="is_liked" @click="like">❤</button> 
+              <button class="btn btn-outline-danger" v-else @click="like">🤍</button>
+              <span>{{ countLike }}</span>
+            </div>
+          </div>
+          
+          <p class="text-start">리뷰 {{ reviewList.length }}</p>
+          <div v-for="review in reviewList" :key="review.id">
+            <p class="text-start">{{ review.content }}</p>
+          </div>
+          
+          <div class="input-group mb-3">
+            <input v-model.trim="reviewData.content" type="text" class="form-control border-warning" placeholder="당신의 감상을 남겨주세요">
+            <span class="input-group-text border-warning">점수:</span>
+            <input v-model.trim="reviewData.rank" type="integer" class="form-control border-warning">
+            <div class="text-end"><button class="btn btn-outline-warning" @click="create_review()">작성</button></div>
+          </div>
+          <iframe 
+            :src="youtubeSrc"
+            frameborder="0"  
+            width="640" 
+            height="360">
+          </iframe>
+        </div>
       </div>
-    </div>
-    
-    <p class="text-start">리뷰 {{ reviewList.length }}</p>
-    <div v-for="review in reviewList" :key="review.id">
-      <p class="text-start">{{ review.content }}</p>
-    </div>
-    
-    <div class="input-group mb-3">
-      <input v-model.trim="reviewData.content" type="text" class="form-control border-warning" placeholder="당신의 감상을 남겨주세요">
-      <span class="input-group-text border-warning">점수:</span>
-      <input v-model.trim="reviewData.rank" type="integer" class="form-control border-warning">
-      <div class="text-end"><button class="btn btn-outline-warning" @click="create_review()">작성</button></div>
-    </div>
-    <iframe 
-      :src="youtubeSrc"
-      frameborder="0"  
-      width="640" 
-      height="360">
-    </iframe>
+      </div>
+      </div>
   </div>
- </div>
 </div>
 
 </template>

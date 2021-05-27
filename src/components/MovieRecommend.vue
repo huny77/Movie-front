@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h3 class="text-light text-start mx-5 mt-3">당신이 좋아할만한 컨텐츠</h3>
+    <h2 class="text-light text-start mx-5 mt-3 my-4">당신이 좋아할만한 컨텐츠</h2>
     <div hidden>{{recommendList[0].poster_path}}</div>
     <div hidden>{{recommendList[0].poster_path}}</div>
     <!-- <div>{{ recommendList.length }}</div> -->
-    <carousel 
+    <carousel class="my-4"
     :center-mode="true" :per-page-custom="[[480, 2], [768, 5]]"
     >
     <!-- :autoplay-timeout="3000" -->

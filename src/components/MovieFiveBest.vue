@@ -1,13 +1,13 @@
 <template>
   <div>    
     <div class="px-5 pt-3">
-      <h3 class="text-light text-start">오늘의 추천 컨텐츠</h3>
+      <h2 class="text-light text-start my-4">오늘의 추천 컨텐츠</h2>
     </div>
     
     <div hidden>
       {{bestMovies[0].poster_path}}
     </div>
-    <carousel-3d autoplay=true autoplayHoverPause=true height=500>
+    <carousel-3d autoplay=true autoplayHoverPause=true height=500 class="my-4">
       <slide :index="0">
         <router-link :to="`/movieinfo/${bestMovies[0].id}`">
           <img :src="bestMoviePosterSrc1" alt="">

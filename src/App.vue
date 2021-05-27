@@ -44,6 +44,25 @@
 
       <!-- Right elements -->
     <div class="d-flex align-items-center">
+
+        <!-- 검색바 -->
+        <form v-if="isLoggedIn" class="d-flex input-group w-auto">
+          <input
+            v-model="query"
+            type="search"
+            class="form-control rounded"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+          <span class="input-group-text border-0" id="search-addon">
+            <router-link :to="`/searchmovie/${query}`">
+              <i class="fas fa-search"></i>
+            </router-link>
+          </span>
+        </form>
+
+        <!-- 로그인 화원가입 -->
         <div v-if="!isLoggedIn" class="d-flex align-items-center">
           <router-link to="/login">
           <button type="button" class="btn btn-link px-3 me-2">
@@ -99,6 +118,11 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      query: ''
+    }
+  },
   computed: {
     ...mapGetters([
       'isLoggedIn'

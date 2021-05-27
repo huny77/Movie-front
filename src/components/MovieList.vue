@@ -48,6 +48,7 @@ export default {
       recommendList: [],
       bestMovies: [],
       like_list: [],
+      like_list_genre: [],
       is_recommend: false,
       is_best: false
     }
@@ -88,6 +89,7 @@ export default {
       .then(res => {
         console.log(res.data)
         this.like_list = res.data.like_movie_list
+        this.like_list_genre = res.data.like_genre_list
       })
       .then(() => {
         for (let i=0; i < this.like_list.length-1; i++) {
@@ -102,6 +104,15 @@ export default {
           axios.get(`https://api.themoviedb.org/3/movie/${this.like_list[i+1]}/recommendations`, { params })
             .then(res => {
               const tmp = this.recommendList.concat(res.data.results.slice(0,5))
+              this.recommendList = tmp
+              console.log(this.recommendList)
+            })
+            .catch(err => {
+              console.error(err)
+            })
+          axios.get(`https://api.themoviedb.org/3/genre/${this.like_list_genre[i]}/movies`, { params })
+            .then(res => {
+              const tmp = this.recommendList.concat(res.data.results.slice(0,2))
               this.recommendList = tmp
               console.log(this.recommendList)
             })

@@ -5,9 +5,7 @@
         <router-link class="text-decoration-none text-dark" to="/createpost">글 작성</router-link>
       </button>
     </div>
-  
-
-    
+      
     <div class="px-5">
       <div class="card border-warning mt-5" v-for="post in posts" :key="post.id">
         <div class="card-header bg-transparent border-warning text-start"><h5>{{ post.title }}</h5></div>
@@ -18,7 +16,41 @@
         </div>
         <div class="card-text text-end px-2">
           <i @click="isModalViewedUpdate=true, tossPost=post, postId=post.id" class="far fa-edit"></i> | 
-          <i @click="deletePosts(post)" class="far fa-trash-alt"></i>
+          <i 
+            @click="tossPost=post, postId=post.id "
+            class="far fa-trash-alt"
+            data-mdb-toggle="modal"
+            data-mdb-target="#exampleModal"
+            ></i>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">삭제</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-mdb-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">게시글을 삭제하시겠습니까?</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-mdb-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="button" @click="deletePosts(tossPost)" class="btn btn-danger">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -30,6 +62,7 @@
     <ModalView v-if="isModalViewedDetail" @close-modal="isModalViewedDetail=false">
       <PostDetail :postId="postId" :getInfo="getInfo"/>
     </ModalView>
+
     <router-view/>
   </div>
 

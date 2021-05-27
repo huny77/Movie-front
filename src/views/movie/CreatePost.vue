@@ -1,30 +1,35 @@
 <template>
   <div>
   <div class="container">
+    <div 
+    class="back-image"> 
+    <img src='@/assets/coc_logo.png' alt="">
+    <div class="my-5">
     <form>
-      <div class="mb-3">
-        <label for="dataTitle" class="form-label"></label>
-        <input v-model.trim="data.title" type="text" class="form-control" placeholder="제목" aria-label="title" aria-describedby="dataTitle">
-      </div>
-      <div class="mb-3">
-        <label for="dataMovieTitle" class="form-label"></label>
-        <input v-model.trim="data.movie_title" type="text" class="form-control" placeholder="영화" aria-label="movieTitle" aria-describedby="dataMovieTitle">
-      </div>
-      <div class="form-outline border border-top-0 mb-4">
-        <input type="number" min="1" max="10" id="dataMovieScore" class="form-control" />
-        <label class="form-label" for="dataMovieScore">Score</label>
-      </div>
-      <div id="dataMovieScore" class="form-text">1점부터 10점 사이를 입력해 주세요.</div>
-      <div class="form-outline mb-4 border border-top-0 border-dark">
-        <textarea class="form-control" v-model.trim="data.content" id="dataMovieContent" rows="4"></textarea>
-        <label class="form-label" for="dataMovieContent">Content</label>
-      </div>
-      <button type="submit" class="btn btn-outline-warning" @click="postCreate" data-mdb-ripple-color="dark">
-        작성
-      </button>
-    </form>
-  </div>
+        <div class="mb-3">
+          <label for="dataTitle" class="form-label"></label>
+          <input v-model.trim="data.title" type="text" class="form-control" placeholder="제목" aria-label="title" aria-describedby="dataTitle">
+        </div>
+        <div class="mb-3">
+          <label for="dataMovieTitle" class="form-label"></label>
+          <input v-model.trim="data.movie_title" type="text" class="form-control" placeholder="영화 제목" aria-label="movieTitle" aria-describedby="dataMovieTitle">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">영화 평점</span>
+          <input v-model="data.rank" type="number" min="1" max="10" class="form-control" aria-label="rank">
+          <span class="input-group-text"> 점</span>
+        </div> 
+        <div class="input-group mb-3">
+          <textarea v-model.trim="data.content" class="form-control" placeholder="내용" aria-label="content" rows="3"></textarea>
+        </div>
 
+        <button type="submit" class="btn btn-outline-warning" @click="postCreate" data-mdb-ripple-color="dark">
+          작성
+        </button>
+      </form>
+    </div>
+  </div>
+  </div>
   </div>
 </template>
 
@@ -72,7 +77,8 @@ export default {
           console.log(res)
         })
         .then(() => {
-          this.$router.push({ name: 'Community' })
+          this.$router.go(this.$router.push({ name: 'Community' }))
+
         })
         .catch(err => {
           console.error(err)
@@ -83,5 +89,8 @@ export default {
 </script>
 
 <style>
+.create {
+  bottom: 20px;
+}
 
 </style>

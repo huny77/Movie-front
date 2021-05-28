@@ -3,26 +3,26 @@
     
     <div class="px-5">
 
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="dataTitle">제목</span>
-        <input v-model.trim="updateData.title" type="text" class="form-control" placeholder="title" aria-label="title" aria-describedby="dataTitle">
+      <div class="mb-3">
+        <label for="dataTitle" class="form-label"></label>
+        <input v-model.trim="updateData.title" type="text" class="form-control" placeholder="제목" aria-label="title" aria-describedby="dataTitle">
       </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="dataMovieTitle">영화</span>
-        <input v-model.trim="updateData.movie_title" type="text" class="form-control" placeholder="movieTitle" aria-label="movieTitle" aria-describedby="dataMovieTitle">
+      <div class="mb-3">
+        <label for="dataMovieTitle" class="form-label"></label>
+        <input v-model.trim="updateData.movie_title" type="text" class="form-control" placeholder="영화 제목" aria-label="movieTitle" aria-describedby="dataMovieTitle">
       </div>   
       <div class="input-group mb-3">
-        <span class="input-group-text">내 점수 : </span>
-        <input v-model="updateData.rank" type="integer" class="form-control" aria-label="rank">
+        <span class="input-group-text">영화 평점</span>
+        <input v-model="updateData.rank" type="number" min="1" max="10" class="form-control" aria-label="rank">
         <span class="input-group-text"> 점</span>
-      </div> 
-      <div class="input-group">
-        <span class="input-group-text">내용</span>
-        <textarea v-model.trim="updateData.content" class="form-control" aria-label="content"></textarea>
+      </div>  
+      <div class="input-group mb-3">
+        <textarea v-model.trim="updateData.content" class="form-control" placeholder="내용" aria-label="content" rows="3"></textarea>
       </div>
       <div class="text-end mt-3">
-        <button class="btn btn-outline-warning" @click="updatePost">써져라</button>
+        <button class="btn btn-outline-primary" @click="updatePost">수정</button>
       </div>
+  
 
     </div>
   </div>
